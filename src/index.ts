@@ -66,7 +66,8 @@ const getIPFS = async (arr: string[]): Promise<string[]> => {
 }
 
 const callAgent=async(ipfs:string,query:string):Promise<string>=>{
-    const response = await fetch(`https://agents.phala.network/ipfs/${ipfs}/0?chatQuery=${query}`, {
+    const encoded = encodeURIComponent(query)
+    const response = await fetch(`https://agents.phala.network/ipfs/${ipfs}/0?chatQuery=${encoded}`, {
         //@ts-ignore
         timeoutMs:120000,
         method: 'GET',
